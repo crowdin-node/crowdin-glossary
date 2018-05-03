@@ -2,6 +2,8 @@
 
 Create and upload glossaries using the Crowdin API
 
+![glossary screenshot](https://user-images.githubusercontent.com/2289/36569408-8a4ad454-17e2-11e8-8a5b-9c394db0eafd.png)
+
 > With Glossary, you can create, store, and manage all the project terminology in one place. The main aim of terminology is to explain some specific terms or the ones often used in the project, so they can be translated properly and consistently.
 
 See
