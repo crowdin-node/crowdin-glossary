@@ -25,7 +25,7 @@ class Glossary {
   add (term, description) {
     assert(term && term.length, 'term is required')
     assert(description && description.length, 'description is required')
-    assert(!this._entries[term], `term ${term} has already been added`)
+    assert(!(term in this._entries), `term ${term} has already been added`)
     this._entries[term] = description
   }
 
