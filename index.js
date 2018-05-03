@@ -15,7 +15,7 @@ class Glossary {
     this._entries = {}
 
     if (!this.crowdinKey) this.crowdinKey = process.env.CROWDIN_KEY
-    
+
     assert(this.project, 'project is required')
     assert(this.crowdinKey, 'crowdinKey or process.env.CROWDIN_KEY is required')
 
@@ -25,7 +25,7 @@ class Glossary {
   add (term, description) {
     assert(term && term.length, 'term is required')
     assert(description && description.length, 'description is required')
-    assert(!this._entries[term], `term ${term} has already been added`)
+    assert(!(term in this._entries), `term ${term} has already been added`)
     this._entries[term] = description
   }
 
@@ -46,7 +46,7 @@ class Glossary {
 
   async publish () {
     const url = `https://api.crowdin.com/api/project/${this.project}/upload-glossary?key=${this.crowdinKey}`
-    
+
     const glossaryFile = tmp.fileSync().name
     fs.writeFileSync(glossaryFile, this.csv)
 
