@@ -15,7 +15,7 @@ class Glossary {
     this._entries = {}
 
     if (!this.crowdinKey) this.crowdinKey = process.env.CROWDIN_KEY
-    
+
     assert(this.project, 'project is required')
     assert(this.crowdinKey, 'crowdinKey or process.env.CROWDIN_KEY is required')
 
@@ -46,7 +46,7 @@ class Glossary {
 
   async publish () {
     const url = `https://api.crowdin.com/api/project/${this.project}/upload-glossary?key=${this.crowdinKey}`
-    
+
     const glossaryFile = tmp.fileSync().name
     fs.writeFileSync(glossaryFile, this.csv)
 

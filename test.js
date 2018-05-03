@@ -7,7 +7,7 @@ const nock = require('nock')
 nock.disableNetConnect()
 
 test('exports a function', () => {
- expect(typeof Glossary).toBe('function')
+  expect(typeof Glossary).toBe('function')
 })
 
 describe('init', () => {
@@ -16,13 +16,13 @@ describe('init', () => {
       Glossary()
     }).toThrow('project is required')
   })
-  
+
   test('crowdinKey is required', () => {
     expect(() => {
       Glossary({project: 'foo'})
     }).toThrow('crowdinKey or process.env.CROWDIN_KEY is required')
   })
-  
+
   test('crowdinKey falls back to CROWDIN_KEY environment variable', () => {
     const existing = process.env.CROWDIN_KEY
     process.env.CROWDIN_KEY = '123'
@@ -80,8 +80,8 @@ describe('glossary.csv', () => {
       .on('end', () => {
         expect(Object.keys(results)).toEqual(['a', 'b', 'c'])
         expect(Object.values(results)).toEqual([
-          'apples alligators anchovies', 
-          'blissful bubble bath', 
+          'apples alligators anchovies',
+          'blissful bubble bath',
           'collecting "crunchy" cornichons'
         ])
       })
@@ -99,17 +99,16 @@ describe('glossary.publish()', () => {
     glossary.add('a', 'apples')
     glossary.add('b', 'bananas')
     glossary.add('c', 'cornichons')
-    const result = await glossary.publish()
+    await glossary.publish()
     expect(mock.isDone()).toBe(true)
   })
 
   // test('throws an error if no entries have been added')
 
   test('handles errors', async () => {
-
     // capture console.error() messages
     const logs = []
-    errors = message => (logs.push(message))
+    const errors = message => (logs.push(message))
     console['error'] = jest.fn(errors)
 
     const glossary = Glossary({project: 'foo', crowdinKey: 'xyz'})
@@ -118,10 +117,11 @@ describe('glossary.publish()', () => {
       .query({key: 'xyz'})
       .reply(500, 'something is wrong')
 
-    const result = await glossary.publish()
+    await glossary.publish()
 
     expect(logs.length).toBe(2)
     expect(logs[0]).toBe('Problem uploading glossary')
     expect(logs[1].message).toMatch(/Response code 500/)
+    expect(mock.isDone()).toBe(true)
   })
 })
