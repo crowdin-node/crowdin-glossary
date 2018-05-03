@@ -44,7 +44,7 @@ class Glossary {
     return `https://crowdin.com/project/${this.project}/settings#glossary`
   }
 
-  async publish () {
+  async upload () {
     const url = `https://api.crowdin.com/api/project/${this.project}/upload-glossary?key=${this.crowdinKey}`
 
     const glossaryFile = tmp.fileSync().name

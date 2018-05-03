@@ -1,6 +1,6 @@
 # crowdin-glossary 
 
-Create and upload glossaries using the Crowdin API
+Create and upload translation glossaries using the Crowdin API
 
 ![glossary screenshot](https://user-images.githubusercontent.com/2289/36569408-8a4ad454-17e2-11e8-8a5b-9c394db0eafd.png)
 
@@ -30,7 +30,7 @@ glossary.add('IME', 'Input Method Editor. A program that...')
 glossary.add('IPC', 'Inter-Process Communication. Electron uses IPC to send...')
 glossary.add('MAS', 'Acronym for Apple Mac App Store.')
 
-glossary.publish()
+glossary.upload()
 ```
 
 ## API

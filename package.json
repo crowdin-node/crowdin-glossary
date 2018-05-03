@@ -1,7 +1,7 @@
 {
   "name": "crowdin-glossary",
   "version": "0.0.0-development",
-  "description": "Create and upload glossaries using the Crowdin API",
+  "description": "Create and upload translation glossaries using the Crowdin API",
   "repository": "https://github.com/crowdin-modules/crowdin-glossary",
   "main": "index.js",
   "license": "MIT",

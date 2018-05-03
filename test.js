@@ -94,7 +94,7 @@ describe('glossary.csv', () => {
   })
 })
 
-describe('glossary.publish()', () => {
+describe('glossary.upload()', () => {
   test('POSTs to the Crowdin API', async () => {
     const glossary = Glossary({project: 'foo', crowdinKey: 'xyz'})
     const mock = nock('https://api.crowdin.com')
@@ -105,7 +105,7 @@ describe('glossary.publish()', () => {
     glossary.add('a', 'apples')
     glossary.add('b', 'bananas')
     glossary.add('c', 'cornichons')
-    await glossary.publish()
+    await glossary.upload()
     expect(mock.isDone()).toBe(true)
   })
 
@@ -123,7 +123,7 @@ describe('glossary.publish()', () => {
       .query({key: 'xyz'})
       .reply(500, 'something is wrong')
 
-    await glossary.publish()
+    await glossary.upload()
 
     expect(logs.length).toBe(2)
     expect(logs[0]).toBe('Problem uploading glossary')
