@@ -1,7 +1,8 @@
 {
   "name": "crowdin-glossary",
-  "description": "Create and upload glossaries using the Crowdin API",
   "version": "0.0.0-development",
+  "description": "Create and upload glossaries using the Crowdin API",
+  "repository": "https://github.com/crowdin-modules/crowdin-glossary",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -31,9 +32,5 @@
     "env": [
       "jest"
     ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/crowdin-modules/crowdin-glossary.git"
   }
 }
