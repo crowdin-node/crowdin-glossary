@@ -56,6 +56,12 @@ describe('glossary.add()', () => {
       glossary.add('IPC', 'inter-process communication')
     }).toThrow('term IPC has already been added')
   })
+
+  test('properly handles JS builtins like `constructor`', () => {
+    glossary.add('constructor', 'a thing')
+    glossary.add('toString', 'a thing')
+    glossary.add('hasOwnProperty', 'a thing')
+  })
 })
 
 describe('glossary.webpage', () => {
