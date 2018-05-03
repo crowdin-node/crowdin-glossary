@@ -1,0 +1,31 @@
+{
+  "name": "crowdin-glossary",
+  "description": "Create and upload glossaries using the Crowdin API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "csv-string": "^3.1.2",
+    "form-data": "^2.3.2",
+    "got": "^8.3.1",
+    "tmp": "0.0.33"
+  },
+  "devDependencies": {
+    "csv-parser": "^1.12.1",
+    "jest": "^22.4.3",
+    "nock": "^9.2.5",
+    "standard": "^11.0.1",
+    "standard-markdown": "^4.0.2",
+    "string-to-stream": "^1.1.1"
+  },
+  "scripts": {
+    "lint": "standard --fix && standard-markdown",
+    "test": "jest && npm run lint",
+    "watch": "jest --watch --notify --notifyMode=change --coverage"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
+}
