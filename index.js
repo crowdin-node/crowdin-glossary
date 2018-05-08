@@ -47,7 +47,7 @@ class Glossary {
   async upload () {
     const url = `https://api.crowdin.com/api/project/${this.project}/upload-glossary?key=${this.crowdinKey}`
 
-    const glossaryFile = tmp.fileSync().name
+    const glossaryFile = tmp.fileSync({postfix: '.csv'}).name
     fs.writeFileSync(glossaryFile, this.csv)
 
     const form = new FormData()
