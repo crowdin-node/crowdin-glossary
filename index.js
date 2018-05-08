@@ -3,6 +3,7 @@ const fs = require('fs')
 const {post} = require('got')
 const FormData = require('form-data')
 const tmp = require('tmp')
+const open = require('opn')
 const {stringify: csvify} = require('csv-string')
 
 module.exports = function (opts = {}) {
@@ -11,14 +12,17 @@ module.exports = function (opts = {}) {
 
 class Glossary {
   constructor (opts) {
-    Object.assign(this, opts)
-    this._entries = {}
-
+    const defaults = {
+      openAfterUpload: true
+    }
+    Object.assign(this, defaults, opts)
+    
     if (!this.crowdinKey) this.crowdinKey = process.env.CROWDIN_KEY
 
     assert(this.project, 'project is required')
     assert(this.crowdinKey, 'crowdinKey or process.env.CROWDIN_KEY is required')
 
+    this._entries = {}
     return this
   }
 
@@ -57,7 +61,12 @@ class Glossary {
 
     const result = await post(url, {body: form})
       .then(() => {
-        console.log(`Uploaded glossary! See ${this.webpage}`)
+        if (this.openAfterUpload && !process.env.CI) {
+          console.log(`Uploaded glossary! Opening ${this.webpage} in your browser`)
+          open(this.webpage) 
+        } else {
+          console.log(`Uploaded glossary! See ${this.webpage}`)
+        }
       })
       .catch(err => {
         console.error('Problem uploading glossary')

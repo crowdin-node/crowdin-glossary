@@ -42,6 +42,7 @@ Returns a new empty glossary instance.
 - `opts` Object
   - `project` String (required) - The name of your project on Crowdin
   - `crowdinKey` String (required) - If not supplied as an option, then `process.env.CROWDIN_KEY` will be the fallback.
+- `openAfterUpload` Boolean (optional) - Open the project glossary in web browser after upload is complete. Defaults to `true`. This feature is disabled on CI environments by detecting `process.env.CI`.
 
 ### `glossary.add(term, description)`
 
