@@ -13,10 +13,11 @@ module.exports = function (opts = {}) {
 class Glossary {
   constructor (opts) {
     const defaults = {
-      openAfterUpload: true
+      openAfterUpload: true,
+      languageCode: 'en'
     }
     Object.assign(this, defaults, opts)
-    
+
     if (!this.crowdinKey) this.crowdinKey = process.env.CROWDIN_KEY
 
     assert(this.project, 'project is required')
@@ -55,7 +56,7 @@ class Glossary {
     fs.writeFileSync(glossaryFile, this.csv)
 
     const form = new FormData()
-    form.append('scheme', 'term_en,description_en')
+    form.append('scheme', `term_${this.languageCode},description_${this.languageCode}`)
     form.append('file', fs.createReadStream(glossaryFile))
     form.append('json', 'true')
 
@@ -63,7 +64,7 @@ class Glossary {
       .then(() => {
         if (this.openAfterUpload && !process.env.CI) {
           console.log(`Uploaded glossary! Opening ${this.webpage} in your browser`)
-          open(this.webpage) 
+          open(this.webpage)
         } else {
           console.log(`Uploaded glossary! See ${this.webpage}`)
         }

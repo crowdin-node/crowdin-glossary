@@ -1,4 +1,4 @@
-# crowdin-glossary 
+# crowdin-glossary
 
 Create and upload translation glossaries using the Crowdin API
 
@@ -42,7 +42,8 @@ Returns a new empty glossary instance.
 - `opts` Object
   - `project` String (required) - The name of your project on Crowdin
   - `crowdinKey` String (required) - If not supplied as an option, then `process.env.CROWDIN_KEY` will be the fallback.
-- `openAfterUpload` Boolean (optional) - Open the project glossary in web browser after upload is complete. Defaults to `true`. This feature is disabled on CI environments by detecting `process.env.CI`.
+  - `openAfterUpload` Boolean (optional) - Open the project glossary in web browser after upload is complete. Defaults to `true`. This feature is disabled on CI environments by detecting `process.env.CI`.
+  - `languageCode` String (optional) - Language code of glossary. Default is `en`.
 
 ### `glossary.add(term, description)`
 
@@ -68,7 +69,7 @@ A getter that returns the web URL of your project's glossary on crowdin.com
 
 ### `glossary.csv`
 
-A getter that converts your entries into a valid CSV string for upload to 
+A getter that converts your entries into a valid CSV string for upload to
 Crowdin. Used for internal purposes.
 
 ## License
