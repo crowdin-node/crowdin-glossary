@@ -69,14 +69,8 @@ describe('glossary.fromFile()', () => {
 
   test('is empty', () => {
     expect(() => {
-      glossary.fromFile('./empty-file.json')
+      glossary.fromFile('./test/empty-file.json')
     }).toThrow('The file seems to be empty')
-  })
-
-  test('file content is an Array or Object', () => {
-    expect(() => {
-      glossary.fromFile('./file.txt')
-    }).toThrow('The file content doesn\'t appear to be a JSON object')
   })
 })
 

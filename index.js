@@ -31,9 +31,9 @@ class Glossary {
 
   fromFile (filename) {
     let glossary = require(filename)
-    assert(glossary, 'The file seems to be empty')
-    assert(typeof glossary === 'object', 'The file content doesn\'t appear to be a JSON object')
+    assert(Object.keys(glossary).length, 'The file seems to be empty')
     glossary.forEach(term => {
+      assert(term, 'Term or description not found')
       this.add(term[0], term[1])
     })
     this._entries = glossary
