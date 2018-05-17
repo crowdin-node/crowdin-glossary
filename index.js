@@ -30,13 +30,10 @@ class Glossary {
   }
 
   fromFile (filename) {
-    let rawdata = fs.readFileSync(filename)
-    let glossary = JSON.parse(rawdata)
-    for (var i in glossary) {
-      assert(i && i.length, `term is required for description ${glossary[i]}`)
-      assert(glossary[i] && glossary[i].length, `description of ${i} is required`)
-      assert(!(Object.keys(this.entries).includes(i)), `term ${i} has already been added`)
-    }
+    let glossary = require(filename)
+    glossary.forEach(term => {
+      this.add(term[0], term[1])
+    })
     this._entries = glossary
   }
 

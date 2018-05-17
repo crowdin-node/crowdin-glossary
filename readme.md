@@ -54,9 +54,9 @@ call `glossary.upload()`
 ### `glossary.fromFile(filename)`
 
 Uploads entries from the a file provided. Entries only exist in memory until you
-call `glossary.upload()` but file remains unchanged.
+call `glossary.upload()`
 
-- `filename` String (required)
+- `filename` String (required)(should be the relative path to the .json file)
 
 ### `glossary.upload()`
 
@@ -76,6 +76,14 @@ A getter that returns the web URL of your project's glossary on crowdin.com
 
 A getter that converts your entries into a valid CSV string for upload to
 Crowdin. Used for internal purposes.
+
+#### `.json` file template
+```json
+[
+  [$term, $description]
+]
+```
+A 2D Array of term and description
 
 ## License
 
