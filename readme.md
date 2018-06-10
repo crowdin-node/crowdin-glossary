@@ -17,7 +17,6 @@ and
 npm install crowdin-glossary --save
 ```
 
-
 ## Usage
 
 ```js
@@ -53,7 +52,7 @@ call `glossary.upload()`
 
 ### `glossary.fromFile(filename)`
 
-Uploads entries from the a file provided. Entries only exist in memory until you
+Uploads entries from the file provided. Entries only exist in memory until you
 call `glossary.upload()`
 
 - `filename` String (required)(should be the relative path to the .json file)
@@ -78,11 +77,13 @@ A getter that converts your entries into a valid CSV string for upload to
 Crowdin. Used for internal purposes.
 
 #### `.json` file template
+
 ```json
 [
   [$term, $description]
 ]
 ```
+
 A 2D Array of term and description
 
 ## License

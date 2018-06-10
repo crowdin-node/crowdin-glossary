@@ -72,6 +72,12 @@ describe('glossary.fromFile()', () => {
       glossary.fromFile('./test/empty-file.json')
     }).toThrow('The file seems to be empty')
   })
+
+  test('upload from a file', () => {
+    expect(() => {
+      glossary.fromFile('./test/glossary_test.json')
+    })
+  })
 })
 
 describe('glossary.webpage', () => {
