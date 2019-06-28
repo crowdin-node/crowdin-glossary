@@ -3,7 +3,7 @@ const fs = require('fs')
 const {post} = require('got')
 const FormData = require('form-data')
 const tmp = require('tmp')
-const open = require('opn')
+const open = require('open')
 const {stringify: csvify} = require('csv-string')
 
 module.exports = function (opts = {}) {
