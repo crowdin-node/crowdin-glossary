@@ -3,7 +3,7 @@ const fs = require('fs')
 const {post} = require('got')
 const FormData = require('form-data')
 const tmp = require('tmp')
-const open = require('opn')
+const open = require('open')
 const {stringify: csvify} = require('csv-string')
 
 module.exports = function (opts = {}) {
@@ -16,7 +16,7 @@ class Glossary {
       openAfterUpload: true
     }
     Object.assign(this, defaults, opts)
-    
+
     if (!this.crowdinKey) this.crowdinKey = process.env.CROWDIN_KEY
 
     assert(this.project, 'project is required')
@@ -63,7 +63,7 @@ class Glossary {
       .then(() => {
         if (this.openAfterUpload && !process.env.CI) {
           console.log(`Uploaded glossary! Opening ${this.webpage} in your browser`)
-          open(this.webpage) 
+          open(this.webpage)
         } else {
           console.log(`Uploaded glossary! See ${this.webpage}`)
         }
