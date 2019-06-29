@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "csv-parser": "^1.12.1",
-    "jest": "^22.4.3",
+    "jest": "^24.8.0",
     "nock": "^9.2.5",
     "standard": "^11.0.1",
     "string-to-stream": "^1.1.1",
