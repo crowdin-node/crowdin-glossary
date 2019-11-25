@@ -64,6 +64,22 @@ describe('glossary.add()', () => {
   })
 })
 
+describe('glossary.fromFile()', () => {
+  const glossary = Glossary({project: 'bar', crowdinKey: 'xyz'})
+
+  test('is empty', () => {
+    expect(() => {
+      glossary.fromFile('./test/empty-file.json')
+    }).toThrow('The file seems to be empty')
+  })
+
+  test('upload from a file', () => {
+    expect(() => {
+      glossary.fromFile('./test/glossary_test.json')
+    })
+  })
+})
+
 describe('glossary.webpage', () => {
   test('is a crowdin URL', () => {
     const glossary = Glossary({project: 'foo-bar', crowdinKey: 'xyz'})

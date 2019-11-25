@@ -33,6 +33,16 @@ class Glossary {
     this._entries[term] = description
   }
 
+  fromFile (filename) {
+    let glossary = require(filename)
+    assert(Object.keys(glossary).length, 'The file seems to be empty')
+    glossary.forEach(term => {
+      assert(term, 'Term or description not found')
+      this.add(term[0], term[1])
+    })
+    this._entries = glossary
+  }
+
   get entries () {
     return this._entries
   }

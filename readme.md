@@ -1,4 +1,4 @@
-# crowdin-glossary 
+# crowdin-glossary
 
 Create and upload translation glossaries using the Crowdin API
 
@@ -16,7 +16,6 @@ and
 ```sh
 npm install crowdin-glossary --save
 ```
-
 
 ## Usage
 
@@ -52,6 +51,13 @@ call `glossary.upload()`
 - `term` String (required)
 - `description` String (required)
 
+### `glossary.fromFile(filename)`
+
+Uploads entries from the file provided. Entries only exist in memory until you
+call `glossary.upload()`
+
+- `filename` String (required)(should be the relative path to the .json file)
+
 ### `glossary.upload()`
 
 Async function that uploads all the added terms to Crowdin.
@@ -68,8 +74,18 @@ A getter that returns the web URL of your project's glossary on crowdin.com
 
 ### `glossary.csv`
 
-A getter that converts your entries into a valid CSV string for upload to 
+A getter that converts your entries into a valid CSV string for upload to
 Crowdin. Used for internal purposes.
+
+#### `.json` file template
+
+```json
+[
+  [$term, $description]
+]
+```
+
+A 2D Array of term and description
 
 ## License
 
